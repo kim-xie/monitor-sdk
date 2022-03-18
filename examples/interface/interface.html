@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>接口监控</title>
+    <script src="../../dist/monitor.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      monitor.init({
+        url: 'http://localhost:8080/reportData'
+      })
+    </script>
+    <style>
+      .div {
+        width: 160px;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin: 20px auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div" onclick="handleAxios()">发送axios</div>
+    <div class="div" onclick="handleFetch()">发送fetch</div>
+    <div class="div" onclick="handleXhr()">发送xhr</div>
+    <script>
+      const handleAxios = () => {
+        axios
+          .get('/user?ID=12345')
+          .then(function (response) {
+            console.log(response)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
+      const handleFetch = () => {
+        fetch('http://www.baidu.com', {
+          method: 'POST'
+        })
+          .then(response => response.json())
+          .then(data => console.log(data))
+      }
+      const handleXhr = () => {
+        const xhr = new XMLHttpRequest()
+        xhr.open('post', 'http://www.baidu.com')
+        xhr.send()
+      }
+    </script>
+  </body>
+</html>
