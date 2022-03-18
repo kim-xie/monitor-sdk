@@ -13,6 +13,7 @@
     "url": "https://github.com/mr-kings/monitor-sdk/issues"
   },
   "homepage": "https://github.com/mr-kings/monitor-sdk/README.md",
+  "license": "ISC",
   "scripts": {
     "build": "rollup -c rollup/build.js",
     "dev": "node rollup/dev.js",
